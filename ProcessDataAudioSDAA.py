@@ -16,11 +16,18 @@ def  remove_nn(wav,sample_rate=16000):
 
     
 class DataViewerApp:
-    def __init__(self, data, audio_data):  # Initialize with dataframes
-        self.data = data
-        self.sdata = audio_data  # Separate audio data storage
+    def __init__(self, df):  # Initialize with dataframes
+        self.df=df
+        self.data =df[['text','speaker_id']] 
+        self.sdata = df['audio'].to_list()  # Separate audio data storage
         self.current_page = 0
         self.current_selected = -1
+
+    def finsh_data(self):
+        self.df['audio'] = self.sdata
+        self.df[['text','speaker_id']]=self.data
+         
+        return self.df
 
     def get_page_data(self, page_number):
         start_index = page_number * 10
