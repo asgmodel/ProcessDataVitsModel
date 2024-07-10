@@ -1,5 +1,9 @@
 # ... (your data loading and preprocessing code)
-# Assuming you have dataframes named 'data' and 'sdata'
+## Inferring data loading and preprocessing code
+
+```python
 app = DataViewerApp(df)
 interface = app.create_interface()
 interface.launch()
+```
+
